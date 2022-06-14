@@ -2,7 +2,7 @@
 
 if [ ! -d ~/.config/animdl ]; then mkdir -p ~/.config/animdl; fi
 if [ ! -f ~/.config/animdl/config.yml ]; then touch ~/.config/animdl/config.yml; fi
-choice=$(printf "provider\nplayer\ndiscord"|fzf --cycle --height 10%)
+choice=$(printf "provider\nplayer\ndiscord\nshow_config"|fzf --cycle --height 10%)
 case $choice in
     provider)
         provider=$(printf "9anime\nallanime\nanimepahe\nanimeout\nanimixplay\ncrunchyroll\nkawaiifu\ngogoanime\nhaho\ntenshi\ntwist\nzoro"|fzf --cycle --height 20%)
@@ -46,5 +46,8 @@ case $choice in
                 bat ~/.config/animdl/config.yml|grep discord_presence
             fi
         fi
+        ;;
+    show_config)
+        bat ~/.config/animdl/config.yml
         ;;
 esac
